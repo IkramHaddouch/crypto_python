@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\PC\Desktop\projet_crypto\.metadata\.plugins\org.eclipse.jdt.core
+3271193799.index
+1291787684.index
+1865797976.index

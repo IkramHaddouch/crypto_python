@@ -1,0 +1,199 @@
+package opera;
+
+import java.util.ArrayList;
+
+public class test2 {
+	
+    public boolean chercher(String s,String[]t) {
+  	  for(int i=0;i<t.length;i++) {
+  		  if(t[i]==s) {
+  			  return true;
+  		  }
+  		  
+  	  }
+  	  return false;
+    }
+
+	 private void solve(String inputText) {
+	      
+	        String[] numbers = inputText.split("[+÷^x-]");
+	        String[] tab = inputText.split("");
+
+	        int k = 0;
+	        String[] tabOp = new String[numbers.length-1];
+	        for (int i = 0; i < tab.length; i++) {
+	            if (tab[i].equals("+") || tab[i].equals("-") || tab[i].equals("x") || tab[i].equals("÷") || tab[i].equals("^")) {
+	                tabOp[k]=tab[i];
+	                k++;
+
+	            }
+	        }
+
+
+	        String t;
+	        String[] newTab = new String[numbers.length + tabOp.length];
+	        for(int i = 0; i < newTab.length; i++) {
+	        	newTab[i] = "";
+	        }
+	        for(int i=0,j=0;i<newTab.length-1;i=i+2,j++){
+	            newTab[i]=numbers[j];
+	            newTab[i+1]= tabOp[j];
+	           
+	        }
+	        newTab[newTab.length-1]=numbers[numbers.length-1];
+	       
+
+	      if(chercher("^",newTab)) {
+		      while(newTab.length!=1) {
+		    	  System.out.println("hhhhhhhhhhhh");
+		    	  for(int i=0;i<newTab.length;i++) {
+			    		  if(newTab[i].equals("^")) {
+			    			  double n1 = Double.parseDouble(newTab[i-1]);
+			    			  double n2 = Double.parseDouble(newTab[i+1]);
+			    			  double result=Math.pow(n1, n2);
+			    			  newTab[i+1]=Double.toString(result);
+			    			  String [] tb = new String[newTab.length-2];
+			    			  for(int j =0;j<tb.length;j++) {
+			    				  if(j<i-1) {
+			    					  tb[j]=newTab[j];
+			    					  
+			    				  }
+			    				  else {
+			    					  tb[j]=newTab[j+2];
+			    					  
+			    				  }
+			    				  
+			    			  }
+			    		      newTab=tb;
+			    			  break;
+			    		  }
+		    	  }
+		      }
+	      }
+	      
+	      if(chercher("x",newTab)) {
+		      while(newTab.length!=1) {
+		    	  for(int i=0;i<newTab.length;i++) {	  
+			    		  if(newTab[i].equals("x")) {
+			    			  double n1 = Double.parseDouble(newTab[i-1]);
+			    			  double n2 = Double.parseDouble(newTab[i+1]);
+			    			  double result=n1*n2;
+			    			  newTab[i+1]=Double.toString(result);
+			    			  String [] tb = new String[newTab.length-2];
+			    			  for(int j =0;j<tb.length;j++) {
+			    				  if(j<i-1) {
+			    					  tb[j]=newTab[j];
+			    					  
+			    				  }
+			    				  else {
+			    					  tb[j]=newTab[j+2];
+			    					  
+			    				  }
+			    				  
+			    			  }
+			    		      newTab=tb;
+			    			  break;
+			    		  }
+		    	  }
+		      }
+	      }
+	      
+	      if(chercher("÷",newTab)) {		  
+		      while(newTab.length!=1) {
+		    	  for(int i=0;i<newTab.length;i++) {  		  
+			    		  if(newTab[i].equals("÷")) {
+			    			  double n1 = Double.parseDouble(newTab[i-1]);
+			    			  double n2 = Double.parseDouble(newTab[i+1]);
+			    			  double result=n1/n2;
+			    			  newTab[i+1]=Double.toString(result);
+			    			  String [] tb = new String[newTab.length-2];
+			    			  for(int j =0;j<tb.length;j++) {
+			    				  if(j<i-1) {
+			    					  tb[j]=newTab[j];
+			    					  
+			    				  }
+			    				  else {
+			    					  tb[j]=newTab[j+2];
+			    					  
+			    				  }
+			    				  
+			    			  }
+			    		      newTab=tb;
+			    			  break;
+			    		  }
+			    		  
+		    	  }
+		      }
+	      }
+	      
+	      
+	      if(chercher("+",newTab)) {
+		      while(newTab.length!=1) {
+		    	  for(int i=0;i<newTab.length;i++) {
+			    		  if(newTab[i].equals("+")) {
+			    			  double n1 = Double.parseDouble(newTab[i-1]);
+			    			  double n2 = Double.parseDouble(newTab[i+1]);
+			    			  double result=n1+n2;
+			    			  newTab[i+1]=Double.toString(result);
+			    			  String [] tb = new String[newTab.length-2];
+			    			  for(int j =0;j<tb.length;j++) {
+			    				  if(j<i-1) {
+			    					  tb[j]=newTab[j];
+			    					  
+			    				  }
+			    				  else {
+			    					  tb[j]=newTab[j+2];
+			    					  
+			    				  }
+			    				  
+			    			  }
+			    		      newTab=tb;
+			    			  break;
+			    		  }
+			    		  
+		    	  }
+		      }
+	      }
+	      
+	      if(chercher("-",newTab)) {
+		      while(newTab.length!=1) {
+		    	  for(int i=0;i<newTab.length;i++) {
+			    		  if(newTab[i].equals("-")) {
+			    			  double n1 = Double.parseDouble(newTab[i-1]);
+			    			  double n2 = Double.parseDouble(newTab[i+1]);
+			    			  double result=n1-n2;
+			    			  newTab[i+1]=Double.toString(result);
+			    			  String [] tb = new String[newTab.length-2];
+			    			  for(int j =0;j<tb.length;j++) {
+			    				  if(j<i-1) {
+			    					  tb[j]=newTab[j];
+			    					  
+			    				  }
+			    				  else {
+			    					  tb[j]=newTab[j+2];
+			    					  
+			    				  }
+			    				  
+			    			  }
+			    		      newTab=tb;
+			    			  break;
+			    		  }
+		    	  }
+		      }
+	      }
+	        
+	      System.out.println("hhhhhhhhhhhh");
+	      for(int c = 0; c < newTab.length; c++) {
+	    	  System.out.println(newTab[c]);
+	      }
+      }
+	 
+
+	public static void main(String[] args) {
+		test2 t = new test2();
+		t.solve("50+6x3");
+        
+	}
+}
+
+

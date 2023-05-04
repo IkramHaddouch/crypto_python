@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+
+public class test {
+
+	 private static void solve(String inputText) {
+	      
+	        String numbers[] = inputText.split("[+÷^x-]");
+	        char[] tab = new char[inputText.length()];
+	        tab = inputText.toCharArray();
+
+	        ArrayList<Character> tabOp = null;
+	        for (int i = 0; i < tab.length; i++) {
+	            tabOp = new ArrayList<Character>();
+	            if (tab[i] == '+' || tab[i] == '-' || tab[i] == 'x' || tab[i] == '÷'|| tab[i] == '^') {
+	                tabOp.add(tab[i]);
+
+	            }
+	        }
+
+
+	        char[] newTab = new char[tab.length + tabOp.size()];
+	        for(int i=0,j=0;i<newTab.length;i=i+2,j++){
+	            newTab[i]=tab[j];
+	            newTab[i+1]= tabOp.get(j);
+	        }
+}
+	 
+
+	public static void main(String[] args) {
+		String inputText="50+60^6÷7x6";
+		solve(inputText);
+
+	}
+
+}
